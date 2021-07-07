@@ -11,7 +11,7 @@ class CacheClient extends Model
     public function saveCache($name, $value, $seconds = 600)
     {
         try{
-            Cache::put($name, $value, $seconds);
+            Cache::forever($name, $value, $seconds);
             return true;
         }
         catch(\Throable $e)
