@@ -2,57 +2,113 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DogecClient;
 
-class DogecController extends Controller
+class DogecController extends ApiController
 {
     public function masternodecount()
     {
-        $client = new DogecClient();
-        return $client->getmasternodecount();
+        try{
+            $client = new DogecClient();
+            $response = $client->getmasternodecount();
+            return $this->successResponse($response);
+        }
+        catch(\Throwable $e)
+        {
+            return $this->errorResponse(400, $e->getMessage());
+        }
+        
     }
 
     public function moneysupply()
     {
-        $client = new DogecClient();
-        return $client->moneysupply();
+        try{
+            $client = new DogecClient();
+            $response = $client->moneysupply();
+            return $this->successResponse($response);
+        }
+        catch(\Throwable $e)
+        {
+            return $this->errorResponse(400, $e->getMessage());
+        }
     }
 
     public function difficulty()
     {
-        $client = new DogecClient();
-        return $client->moneysupply();
+        try{
+            $client = new DogecClient();
+            $response = $client->difficulty();
+            return $this->successResponse($response);
+        }
+        catch(\Throwable $e)
+        {
+            return $this->errorResponse(400, $e->getMessage());
+        }
     }
 
     public function blockcount()
     {
-        $client = new DogecClient();
-        return $client->blockcount();
+        try{
+            $client = new DogecClient();
+            $response = $client->blockcount();
+            return $this->successResponse($response);
+        }
+        catch(\Throwable $e)
+        {
+            return $this->errorResponse(400, $e->getMessage());
+        }
     }
 
     public function proposals()
     {
-        $client = new DogecClient();
-        return $client->getproposals();
+        try{
+            $client = new DogecClient();
+            $response = $client->getproposals();
+            return $this->successResponse($response);
+        }
+        catch(\Throwable $e)
+        {
+            return $this->errorResponse(400, $e->getMessage());
+        }
     }
 
     public function masternodes()
     {
-        $client = new DogecClient();
-        return $client->getmasternodes();
+        try{
+            $client = new DogecClient();
+            $response = $client->getmasternodes();
+            return $this->successResponse($response);
+        }
+        catch(\Throwable $e)
+        {
+            return $this->errorResponse(400, $e->getMessage());
+        }
     }
 
     public function masternode(Request $request)
     {
-        $client = new DogecClient();
-        return $client->getmasternodes($request['filter']);
+        try{
+            $client = new DogecClient();
+            $response = $client->getmasternodes($request['filter']);
+            return $this->successResponse($response);
+        }
+        catch(\Throwable $e)
+        {
+            return $this->errorResponse(400, $e->getMessage());
+        }
     }
 
     public function peers()
     {
-        $client = new DogecClient();
-        return $client->getpeers();
+        try{
+            $client = new DogecClient();
+            $response = $client->getpeers();
+            return $this->successResponse($response);
+        }
+        catch(\Throwable $e)
+        {
+            return $this->errorResponse(400, $e->getMessage());
+        }
     }
 }

@@ -50,6 +50,11 @@ class DogecClient extends Model
         return $this->client('getinfo')['moneysupply'];
     }
 
+    public function difficulty()
+    {
+        return $this->client('getinfo')['difficulty'];
+    }
+
     public function blockcount()
     {
         return $this->client('getinfo')['blocks'];
