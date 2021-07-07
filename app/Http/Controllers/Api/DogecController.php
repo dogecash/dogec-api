@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\DogecClient;
+use App\Models\CacheClient;
 
 class DogecController extends ApiController
 {
     public function masternodecount()
     {
         try{
-            $client = new DogecClient();
-            $response = $client->getmasternodecount();
+            $response = CacheClient::getCache('masternodecount');
             return $this->successResponse($response);
         }
         catch(\Throwable $e)
@@ -25,7 +25,7 @@ class DogecController extends ApiController
     {
         try{
             $client = new DogecClient();
-            $response = $client->moneysupply();
+            $response = CacheClient::getCache('moneysupply');
             return $this->successResponse($response);
         }
         catch(\Throwable $e)
@@ -38,7 +38,7 @@ class DogecController extends ApiController
     {
         try{
             $client = new DogecClient();
-            $response = $client->difficulty();
+            $response = CacheClient::getCache('difficulty');
             return $this->successResponse($response);
         }
         catch(\Throwable $e)
@@ -51,7 +51,7 @@ class DogecController extends ApiController
     {
         try{
             $client = new DogecClient();
-            $response = $client->blockcount();
+            $response = CacheClient::getCache('blockcount');
             return $this->successResponse($response);
         }
         catch(\Throwable $e)
@@ -64,7 +64,7 @@ class DogecController extends ApiController
     {
         try{
             $client = new DogecClient();
-            $response = $client->getproposals();
+            $response = CacheClient::getCache('proposals');
             return $this->successResponse($response);
         }
         catch(\Throwable $e)
