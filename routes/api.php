@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\DogecClient;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix("/v1")->group(function(){
+    Route::get('/masternodecount', function (Request $request) {
+        $client = new DogecClient();
+        return $client->getmasternodecount();
+    });
+    
+    Route::get('/moneysupply', function (Request $request) {
+        $client = new DogecClient();
+        return $client->moneysupply();
+    });
+    
+    Route::get('/difficulty', function (Request $request) {
+        $client = new DogecClient();
+        return $client->difficulty();
+    });
+    
+    Route::get('/blockcount', function (Request $request) {
+        $client = new DogecClient();
+        return $client->blockcount();
+    });
+
+    Route::get('/proposals', function (Request $request) {
+        $client = new DogecClient();
+        return $client->getproposals();
+    });    
+    
+    Route::get('/masternodes', function (Request $request) {
+        $client = new DogecClient();
+        return $client->getmasternodes();
+    });    
+
+    Route::get('/masternodes/{filter}', function (Request $request) {
+        $client = new DogecClient();
+        return $client->getmasternodes($request['filter']);
+    });    
 });
+
+
+
