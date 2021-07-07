@@ -26,6 +26,8 @@ These endpoints retrieve a response in real time:
 -   masternodes/{address}
 -   peers
 
+## API Calls List
+
 ### masternodecount
 
 > Returns an array with the count of masternodes by status
