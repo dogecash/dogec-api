@@ -64,5 +64,20 @@ class DogecClient extends Model
     {
         return $this->client('listmasternodes', [$filter]);
     }
+
+    public function getpeers()
+    {
+        $peers = $this->client('getpeerinfo');
+        $filtered_peers = [];
+        foreach($peers as $peer)
+        {
+            unset($peer['addrlocal']);
+            unset($peer['services']);
+            unset($peer['inflight']);
+            unset($peer['whitelisted']);
+            array_push($filtered_peers, $peer);
+        }
+        return $filtered_peers;
+    }
     
 }

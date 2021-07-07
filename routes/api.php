@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\DogecClient;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,40 +15,21 @@ use App\Models\DogecClient;
 */
 
 Route::prefix("/v1")->group(function(){
-    Route::get('/masternodecount', function (Request $request) {
-        $client = new DogecClient();
-        return $client->getmasternodecount();
-    });
+    Route::get('/masternodecount', [App\Http\Controllers\Api\DogecController::class, 'masternodecount']);
     
-    Route::get('/moneysupply', function (Request $request) {
-        $client = new DogecClient();
-        return $client->moneysupply();
-    });
+    Route::get('/moneysupply', [App\Http\Controllers\Api\DogecController::class, 'moneysupply']);
     
-    Route::get('/difficulty', function (Request $request) {
-        $client = new DogecClient();
-        return $client->difficulty();
-    });
+    Route::get('/difficulty', [App\Http\Controllers\Api\DogecController::class, 'difficulty']);
     
-    Route::get('/blockcount', function (Request $request) {
-        $client = new DogecClient();
-        return $client->blockcount();
-    });
+    Route::get('/blockcount', [App\Http\Controllers\Api\DogecController::class, 'blockcount']);
 
-    Route::get('/proposals', function (Request $request) {
-        $client = new DogecClient();
-        return $client->getproposals();
-    });    
+    Route::get('/proposals', [App\Http\Controllers\Api\DogecController::class, 'proposals']);    
     
-    Route::get('/masternodes', function (Request $request) {
-        $client = new DogecClient();
-        return $client->getmasternodes();
-    });    
+    Route::get('/masternodes', [App\Http\Controllers\Api\DogecController::class, 'masternodes']);    
 
-    Route::get('/masternodes/{filter}', function (Request $request) {
-        $client = new DogecClient();
-        return $client->getmasternodes($request['filter']);
-    });    
+    Route::get('/masternodes/{filter}', [App\Http\Controllers\Api\DogecController::class, 'masternode']);  
+    
+    Route::get('/peers', [App\Http\Controllers\Api\DogecController::class, 'peers']);  
 });
 
 
