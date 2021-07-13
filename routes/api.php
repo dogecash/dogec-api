@@ -40,6 +40,3 @@ Route::prefix("/v1")->group(function(){
 
     Route::get('/announcements', [App\Http\Controllers\Api\AnnouncementsController::class, 'announcements']); 
 });
-
-
-
