@@ -34,19 +34,37 @@ class CacheClient extends Model
     public function cronCache()
     {
         try{
-            $client = new DogecClient();
+            $DogecClient = new DogecClient();
 
-            $masternodecount = $client->getmasternodecount();
-            $moneysupply = $client->moneysupply();
-            $difficulty = $client->difficulty();
-            $blockcount = $client->blockcount();
-            $getproposals = $client->getproposals();
+            $masternodecount = $DogecClient->getmasternodecount();
+            $moneysupply = $DogecClient->moneysupply();
+            $difficulty = $DogecClient->difficulty();
+            $blockcount = $DogecClient->blockcount();
+            $getproposals = $DogecClient->getproposals();
+
+            $GithubClient = new GithubClient();
+            $latestRelease = $GithubClient->latestRelease();
+            $daysWithoutActivity = $GithubClient->daysWithouActiviy();
+
+            $DiscordClient = new DiscordClient();
+            $DiscordMembers = $DiscordClient->getMembers();
+
+            $ChainReviewClient = new ChainReviewClient();
+            $wallets = $ChainReviewClient->walletCount();
+
+            $KBClient = new KBClient();
+            $announcements = $KBClient->getAnnouncements();
 
             $this->saveCache('masternodecount', $masternodecount);
             $this->saveCache('moneysupply', $moneysupply);
             $this->saveCache('difficulty', $difficulty);
             $this->saveCache('blockcount', $blockcount);
             $this->saveCache('proposals', $getproposals);
+            $this->saveCache('latestRelease', $latestRelease);
+            $this->saveCache('daysWithoutActivity', $daysWithoutActivity);
+            $this->saveCache('DiscordMembers', $DiscordMembers);
+            $this->saveCache('wallets', $wallets);
+            $this->saveCache('announcements', $announcements);
         }
         catch(\Throable $e)
         {
