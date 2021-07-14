@@ -24,7 +24,7 @@ class GithubClient extends Model
     public function latestRelease()
     {
         $request = $this->client('repos/dogecash/dogecash/releases/latest');
-        $tag = str_replace('v', '', $request['tag_name']);
+        $tag = $request['tag_name'];
         $linkBase = "https://github.com/dogecash/dogecash/releases/download/$tag/";
         $release = [
             "version" => $tag
