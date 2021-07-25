@@ -73,16 +73,18 @@ class DogecClient extends Model
     public function getpeers()
     {
         $peers = $this->client('getpeerinfo');
+
+        $proto = 70924;
+        $currentBlock = $this->blockcount();
+
         $filtered_peers = [];
         foreach($peers as $peer)
         {
-            unset($peer['addrlocal']);
-            unset($peer['services']);
-            unset($peer['inflight']);
-            unset($peer['whitelisted']);
-            array_push($filtered_peers, $peer);
+            if($peer['synced_headers'] >= $currentBlock && $peer['synced_blocks'] != '-1' && $peer['version'] == $proto)
+            {
+                array_push($filtered_peers, $peer['addr']);
+            }   
         }
         return $filtered_peers;
-    }
-    
+    } 
 }
