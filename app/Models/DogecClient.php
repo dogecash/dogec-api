@@ -10,7 +10,7 @@ class DogecClient extends Model
 {
     public function client($method, $parameters = [])
     {
-        try{
+        try {
             $baseUrl = env('DOGEC_URL');
             $port = env('DOGEC_PORT');
             $username = env('DOGEC_USERNAME');
@@ -19,23 +19,19 @@ class DogecClient extends Model
             $params = [
                 'method' => $method
             ];
-            
-            if( count($parameters) )
-            {
+
+            if (count($parameters)) {
                 $params['params'] = $parameters;
             }
 
             $request = Http::post("http://$username:$password@$baseUrl:$port", $params);
 
-            if( $request['error'] )
-            {  
+            if ($request['error']) {
                 throw new \Exception($request['error']['message']);
             }
 
             return $request['result'];
-        }
-        catch(\Throwable $e)
-        {
+        } catch (\Throwable $e) {
             throw $e;
         }
     }
@@ -74,17 +70,15 @@ class DogecClient extends Model
     {
         $peers = $this->client('getpeerinfo');
 
-        $proto = 70924;
+        $proto = 70925;
         $currentBlock = $this->blockcount();
 
         $filtered_peers = [];
-        foreach($peers as $peer)
-        {
-            if($peer['synced_headers'] >= $currentBlock && $peer['synced_blocks'] != '-1' && $peer['version'] == $proto)
-            {
+        foreach ($peers as $peer) {
+            if ($peer['synced_headers'] >= $currentBlock && $peer['synced_blocks'] != '-1' && $peer['version'] == $proto) {
                 array_push($filtered_peers, $peer['addr']);
-            }   
+            }
         }
         return $filtered_peers;
-    } 
+    }
 }
