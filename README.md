@@ -8,9 +8,9 @@ Clone repository, run composer and configure settings in .env
 
 ## API
 
-Use `https://network.dogecash.org/api/v1` as the base of every endpoint.
+Use `https://api.dogecash.org/api/v1` as the base of every endpoint.
 
-For example; `GET https://network.dogecash.org/api/v1/network/masternodecount`
+For example; `GET https://api.dogecash.org/api/v1/network/masternodecount`
 
 In order to improve performance, some endpoints are cached and updated every 10 minutes. These are:
 
@@ -37,7 +37,7 @@ These endpoints retrieve a response in real time:
 
 -   Endpoint: `/network/masternodecount`
 
-Example: `GET https://network.dogecash.org/api/v1/network/masternodecount`
+Example: `GET https://api.dogecash.org/api/v1/network/masternodecount`
 
 ### moneysupply
 
@@ -45,7 +45,7 @@ Example: `GET https://network.dogecash.org/api/v1/network/masternodecount`
 
 -   Endpoint: `/network/moneysupply`
 
-Example: `GET https://network.dogecash.org/api/v1/network/moneysupply`
+Example: `GET https://api.dogecash.org/api/v1/network/moneysupply`
 
 ### difficulty
 
@@ -53,7 +53,7 @@ Example: `GET https://network.dogecash.org/api/v1/network/moneysupply`
 
 -   Endpoint: `/network/difficulty`
 
-Example: `GET https://network.dogecash.org/api/v1/network/difficulty`
+Example: `GET https://api.dogecash.org/api/v1/network/difficulty`
 
 ### blockcount
 
@@ -61,7 +61,7 @@ Example: `GET https://network.dogecash.org/api/v1/network/difficulty`
 
 -   Endpoint: `/network/blockcount`
 
-Example: `GET https://network.dogecash.org/api/v1/network/blockcount`
+Example: `GET https://api.dogecash.org/api/v1/network/blockcount`
 
 ### proposals
 
@@ -69,7 +69,7 @@ Example: `GET https://network.dogecash.org/api/v1/network/blockcount`
 
 -   Endpoint: `/network/proposals`
 
-Example: `GET https://network.dogecash.org/api/v1/network/proposals`
+Example: `GET https://api.dogecash.org/api/v1/network/proposals`
 
 ### masternodes
 
@@ -77,7 +77,7 @@ Example: `GET https://network.dogecash.org/api/v1/network/proposals`
 
 -   Endpoint: `/network/masternodes`
 
-Example: `GET https://network.dogecash.org/api/v1/network/masternodes`
+Example: `GET https://api.dogecash.org/api/v1/network/masternodes`
 
 ### masternodes/{address}
 
@@ -85,7 +85,7 @@ Example: `GET https://network.dogecash.org/api/v1/network/masternodes`
 
 -   Endpoint: `/network/masternodes/{address}`
 
-Example: `GET https://network.dogecash.org/api/v1/network/masternodes/DBCLwNa8f3WzN8WLoq4BGHopVDBiwnKhuT`
+Example: `GET https://api.dogecash.org/api/v1/network/masternodes/DBCLwNa8f3WzN8WLoq4BGHopVDBiwnKhuT`
 
 ### peers
 
@@ -93,7 +93,7 @@ Example: `GET https://network.dogecash.org/api/v1/network/masternodes/DBCLwNa8f3
 
 -   Endpoint: `/network/peers/`
 
-Example: `GET https://network.dogecash.org/api/v1/network/peers`
+Example: `GET https://api.dogecash.org/api/v1/network/peers`
 
 ## General endpoints
 
@@ -103,7 +103,7 @@ Example: `GET https://network.dogecash.org/api/v1/network/peers`
 
 -   Endpoint: `/wallet/latest/`
 
-Example: `GET https://network.dogecash.org/api/v1/wallet/latest/`
+Example: `GET https://api.dogecash.org/api/v1/wallet/latest/`
 
 ### stats
 
@@ -111,7 +111,7 @@ Example: `GET https://network.dogecash.org/api/v1/wallet/latest/`
 
 -   Endpoint: `/stats/`
 
-Example: `GET https://network.dogecash.org/api/v1/stats/`
+Example: `GET https://api.dogecash.org/api/v1/stats/`
 
 ### announcements
 
@@ -119,4 +119,4 @@ Example: `GET https://network.dogecash.org/api/v1/stats/`
 
 -   Endpoint: `/announcements/`
 
-Example: `GET https://network.dogecash.org/api/v1/announcements/`
+Example: `GET https://api.dogecash.org/api/v1/announcements/`
