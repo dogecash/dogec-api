@@ -75,7 +75,7 @@ class DogecClient extends Model
 
         $filtered_peers = [];
         foreach ($peers as $peer) {
-            if ($peer['synced_headers'] >= $currentBlock && $peer['synced_blocks'] != '-1' && $peer['version'] == $proto) {
+            if ($peer['synced_headers'] >= $currentBlock && $peer['synced_blocks'] != '-1' && $peer['version'] == $proto && strpos($peer['addr'], '56740') !== false) {
                 array_push($filtered_peers, $peer['addr']);
             }
         }
