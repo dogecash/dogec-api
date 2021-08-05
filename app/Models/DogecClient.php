@@ -56,6 +56,11 @@ class DogecClient extends Model
         return $this->client('getinfo')['blocks'];
     }
 
+    public function protocol()
+    {
+        return $this->client('getinfo')['protocolversion'];
+    }
+
     public function getproposals()
     {
         return $this->client('getbudgetinfo');
@@ -70,10 +75,10 @@ class DogecClient extends Model
     {
         $peers = $this->client('getpeerinfo');
 
-        $proto = 70925;
+        $proto = $this->protocol();
         $currentBlock = $this->blockcount();
 
-        $filtered_peers = [];
+        $filtered_peers = [env('DOGEC_URL') . ':56740'];
         foreach ($peers as $peer) {
             if ($peer['synced_headers'] >= $currentBlock && $peer['synced_blocks'] != '-1' && $peer['version'] == $proto && strpos($peer['addr'], '56740') !== false) {
                 array_push($filtered_peers, $peer['addr']);
