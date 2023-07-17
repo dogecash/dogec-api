@@ -49,9 +49,6 @@ class CacheClient extends Model
             $DiscordClient = new DiscordClient();
             $DiscordMembers = $DiscordClient->getMembers();
 
-            $ChainReviewClient = new ChainReviewClient();
-            $wallets = $ChainReviewClient->walletCount();
-
             $KBClient = new KBClient();
             $announcements = $KBClient->getAnnouncements();
 
@@ -63,7 +60,6 @@ class CacheClient extends Model
             $this->saveCache('latestRelease', $latestRelease);
             $this->saveCache('daysWithoutActivity', $daysWithoutActivity);
             $this->saveCache('DiscordMembers', $DiscordMembers);
-            $this->saveCache('wallets', $wallets);
             $this->saveCache('announcements', $announcements);
         }
         catch(\Throable $e)
